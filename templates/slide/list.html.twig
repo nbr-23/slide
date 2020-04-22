@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Slide Table{% endblock %}
+{% block title %}Liste{% endblock %}
 
 {% block body %}
 
 <a href="{{ path('slide_new') }}">Create new</a>
-
-    <h1>Slide index</h1>
+<div class="row">
+    <h1>Liste des images</h1>
 
     <table class="table">
         <thead>
@@ -17,23 +17,23 @@
             </tr>
         </thead>
         <tbody>
-        {% for slide in slides %}
+            {% for slide in slides %}
             <tr>
                 <td>{{ slide.id }}</td>
                 <td>{{ slide.imageName }}</td>
                 <td>
-                    
+
                     <a href="{{ path('slide_show', {'id': slide.id}) }}">show</a>
                     {{ include('slide/_delete_form.html.twig') }}
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
                 <td colspan="3">no records found</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 
-    
+</div>
 {% endblock %}
