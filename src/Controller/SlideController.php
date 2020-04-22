@@ -10,9 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/slide")
- */
+
 class SlideController extends AbstractController
 {
     /**
@@ -20,10 +18,22 @@ class SlideController extends AbstractController
      */
     public function index(SlideRepository $slideRepository): Response
     {
-        return $this->render('slide/index.html.twig', [
+        return $this->render('slide/slide.html.twig', [
             'slides' => $slideRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/list", name="slide_list", methods={"GET"})
+     */
+    public function list(SlideRepository $slideRepository): Response
+    {
+        return $this->render('slide/list.html.twig', [
+            'slides' => $slideRepository->findAll(),
+        ]);
+    }
+
+
 
     /**
      * @Route("/new", name="slide_new", methods={"GET","POST"})
