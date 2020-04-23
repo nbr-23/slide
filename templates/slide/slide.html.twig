@@ -6,21 +6,18 @@
 
 <!-- ICI LE SLIDE DE LA PAGE D'ACCUEIL -->
 
-<div class="row">
-    {% for slide in slides %}
-    <tr>
-        <td>{{ slide.id }}</td>
-        <td>{{ slide.imageName }}</td>
-        <td>
-            <img src="{{ path('slide_show', {'id': slide.id}) }}" />
-        </td>
-    </tr>
-    {% else %}
-    <tr>
-        <td colspan="3">no records found</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        {% for slide in slides %}
+        <div class="col-4" ><img class="img-thumbnail img-responsive" style="max-height: 200px; margin-top:200px;" src="{{asset('images/products/' ~slide.imageName )}}" /></div>
+        {% else %}
+        <tr>
+            <td colspan="3">Aucune image n'est disponible</td>
+            <a class="btn btn-success" href="{{ path('slide_new') }}">Ajouter une image</a>
+
+        </tr>
+        {% endfor %}
+    </div>
 </div>
+
 {% endblock %}
