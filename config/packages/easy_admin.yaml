@@ -1,0 +1,18 @@
+
+easy_admin:
+    site_name: '<i>Gestion des Slides</i>'
+    design:
+      menu:
+         - { label: 'Revenir à laccueil', route: 'slide_index', icon: 'home' }
+         - { entity: 'Slide', label: 'Slides', icon: 'image' }
+         - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
+  
+    entities:
+# Les entitées à gérer
+        User:
+          class: App\Entity\User
+        Slide:
+          class: App\Entity\Slide
+          form:
+            fields:
+              - { property: 'imageFile', type: 'vich_image'}
