@@ -29,7 +29,7 @@ lorem upsum..
 
 1. Cloner le projet 
 2. Faite la commande: composer install 
-3. Importez la base de données dans phpMyAdmin pour importer l'utilisateur
+3. Importez la base de données dans phpMyAdmin pour importer l'utilisateur (elle est présente dans la racine du projet)
 4. Faite la commande: php bin/console make:migration
 5. Faite la commande: php bin/console doctrine:migrations:migrate
 
