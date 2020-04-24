@@ -1,18 +1,31 @@
-
 easy_admin:
-    site_name: '<i>Gestion des Slides</i>'
-    design:
-      menu:
-         - { label: 'Revenir à laccueil', route: 'slide_index', icon: 'home' }
-         - { entity: 'Slide', label: 'Slides', icon: 'image' }
-         - { entity: 'User', label: 'Utilisateurs', icon: 'user' }
-  
-    entities:
-# Les entitées à gérer
-        User:
-          class: App\Entity\User
-        Slide:
-          class: App\Entity\Slide
-          form:
-            fields:
-              - { property: 'imageFile', type: 'vich_image'}
+  site_name: "<i>Gestion des Slides</i>" # Titre de la page
+  design: # Menu de gauche
+    menu:
+      - { label: "Revenir à laccueil", route: "slide_index", icon: "home" }
+      - { entity: "Slide", label: "Slides", icon: "image" }
+      - { entity: "User", label: "Utilisateurs", icon: "user" }
+
+  entities: # Les entitées à gérer
+
+    User: # Entité utilisateur
+      class: App\Entity\User
+
+    Slide: # Entité Slide
+      class: App\Entity\Slide
+      list:
+        fields: # Champs présent dans l'entité slide
+          - {
+              property: "imageName",
+              type: "image",
+              base_path: "images/products/",
+            }
+      form:  # Champs présent dans le formulaire d'ajout de l'entité Slide
+        fields:
+          - { property: "imageFile", type: "vich_image" }
+
+  list: # Champs visibles à partir du tableau de la page admin
+    actions:
+      - -edit # Suppression du champ edit
+      - { name: "delete", icon: "recycle", label: "Delete" } 
+    batch_actions: ["delete"] # Création de la case à cocher pour suppresion 
